@@ -12,6 +12,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class algorithm {
+
     public static void main(String [] args){
         String line;
                 Path file;
