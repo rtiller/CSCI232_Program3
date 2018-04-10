@@ -49,9 +49,6 @@ public class algorithm
                     //
                     //Creating a Int array for matrix from the rest of the .txt document
                     //
-                    int x;
-                    int i=0;
-                    int[] matrixTemp = new int[120];
                     
                     int itr = 0;
                     matrix  = new int[size][size];
@@ -66,30 +63,6 @@ public class algorithm
                         itr++;
                     }
                     
-                    /*
-                    while ((x = reader.read()) != -1) 
-                    {
-                        if(x >= 48)//converting ascii values to INTS and ignoring ","
-                        {
-                            int numericValue = Character.getNumericValue(x);
-                            matrixTemp[i]= numericValue;
-                            //System.out.println("Do something with " + numericValue);
-                            i++;
-                        }
-                    }
-                    
-                    
-                    int itr = 0;
-                    matrix  = new int[size][size];
-                    for(int j = 0; j <= size-1; j++)
-                    {
-                        for(int k = 0; k <= size-1; k++)
-                        {
-                            matrix[j][k] = matrixTemp[itr];
-                            itr++;
-                        }
-                    }
-                    */
                     //
                     //Creating a 2D array from global arrays Matrix and Label
                     //
@@ -128,9 +101,13 @@ public class algorithm
         {
             for(int k = 0; k <= size-1; k++)
             {
-                int x = matrix[j][k];
-                System.out.print(x + " ");
-            }
+                if(matrix[j][k] == 999){
+                    System.out.print("I ");
+                }
+                else{
+                    System.out.print(matrix[j][k] + " ");
+                }
+            }                
             System.out.println();
         }
     }
