@@ -175,7 +175,7 @@ public class algorithm
             marked.add(minIndex);
         }
 
-        System.out.println("Prims Marix:");
+        System.out.println("Prims Matrix:");
         //print labels.
         for (int i = diag; i < minSpanningTree.length; i++) {
             for (int j = diag; j < minSpanningTree.length; j++) 
