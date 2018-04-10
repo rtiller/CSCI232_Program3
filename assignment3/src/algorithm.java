@@ -62,54 +62,11 @@ public class algorithm
                         }
                         itr++;
                     }
-                    
-                    //
-                    //Creating a 2D array from global arrays Matrix and Label
-                    //
-                    /*
-                    adjacencyMatrix = new char[size][size+1];//initializing the 2D array for the correct size
-                    int itr = 0;
-                    for(int j = 0; j <= size; j++)
-                    {
-                        adjacencyMatrix[j][0] = label[j];
-                        for(int k = 1; k <= size+1; k++)
-                        {
-                            adjacencyMatrix[j][k] = (char) matrix[itr];
-                            itr++;
-                        }
-                    }*/
-                    
                 }catch (IOException x){
             System.err.format("IOException: %s%n", x);
         }
-    }
-    
-    public void printLabelArray()
-    {
-        for(int i = 0; i < label.length; i++)
-        {
-            System.out.print(label[i] + " , ");            
-        }
-        System.out.println("\nSize of label array is " + size);
-        System.out.println("And size of matrix array will be " + size + "x" + size);
-    }
-    public void printIntArray()
-    {
-        System.out.println("Printing Matrix Array: ");  
-       
-        for(int j = 0; j <= size-1; j++)
-        {
-            for(int k = 0; k <= size-1; k++)
-            {
-                if(matrix[j][k] == 999){
-                    System.out.print("I ");
-                }
-                else{
-                    System.out.print(matrix[j][k] + " ");
-                }
-            }                
-            System.out.println();
-        }
+        
+        printMatrix(matrix);
     }
     
     public void printMinEdge(int x)
@@ -125,6 +82,7 @@ public class algorithm
         int test = queue.remove();
         System.out.print("\nMin edge value is ");
         System.out.println(test);
+        System.out.println();
     }
    /* 
     public void prim(){
@@ -160,7 +118,7 @@ public class algorithm
         int i, j, k;
         
         for(i = 0; i < size; i++){
-            for(j = 0; i < size; i++){
+            for(j = 0; j < size; j++){
                 d[i][j] = matrix[i][j];
             }
         }
@@ -170,32 +128,46 @@ public class algorithm
                 for(k = 0; k < size; k++){
                     if(d[j][k] > d[j][i] + d[i][k]){
                         d[j][k] = d[j][i] + d[i][k];
+                        printMatrix(d);
                     }
                 }
             }
-        }
-        
-        for(i = 0; i < size; i++)
-        {
-            for(j = 0; j < size; j++)
-            {
-                int x = d[i][j];
-                System.out.print(x  + " ");
-            }
-            System.out.println();
-        }
-        
+        } 
     }
     
-    
+    public void printMatrix(int[][] matrix){
+        int i,j;
+       
+       for(i=0; i < size; i++){
+           
+           System.out.print("  " + label[i]);
+       }
+       System.out.println();
+       for(i = 0; i < size; i++)
+        {
+            System.out.print(label[i] + " ");
+            for(j = 0; j < size; j++)
+            {
+                if(matrix[i][j] == 999){
+                    System.out.print("I ");
+                }
+                else{
+                    System.out.print(matrix[i][j] + " ");
+                }
+            }                
+            System.out.println();
+        } 
+        System.out.println();
+    }
+}
 /*
 --------------------------------------------------------------------------------------- 
                            Prims_Algorithm
 ---------------------------------------------------------------------------------------     
-*/    
+  
 public class Prims_Algorithm 
 {
-    /*Pseudocode:
+    Pseudocode:
     algorithm: An undirected, weighted, connected graph G with n vertices and m edges
     output: A minimum spanning tree T for G
     
@@ -228,7 +200,6 @@ public class Prims_Algorithm
         }
     }
 */
-} 
-}
+ 
   
 
