@@ -52,6 +52,21 @@ public class algorithm
                     int x;
                     int i=0;
                     int[] matrixTemp = new int[120];
+                    
+                    int itr = 0;
+                    matrix  = new int[size][size];
+                        
+                    while ((line = reader.readLine()) != null){
+                        String[] array = line.split(",");
+                        
+                        for(int k = 0; k < size; k++)
+                        {
+                            matrix[itr][k] = (Integer.parseInt(array[k]));
+                        }
+                        itr++;
+                    }
+                    
+                    /*
                     while ((x = reader.read()) != -1) 
                     {
                         if(x >= 48)//converting ascii values to INTS and ignoring ","
@@ -62,6 +77,8 @@ public class algorithm
                             i++;
                         }
                     }
+                    
+                    
                     int itr = 0;
                     matrix  = new int[size][size];
                     for(int j = 0; j <= size-1; j++)
@@ -72,7 +89,7 @@ public class algorithm
                             itr++;
                         }
                     }
-                    
+                    */
                     //
                     //Creating a 2D array from global arrays Matrix and Label
                     //
@@ -101,19 +118,20 @@ public class algorithm
             System.out.print(label[i] + " , ");            
         }
         System.out.println("\nSize of label array is " + size);
-        System.out.println("And size of matrix array will be " + size + "x" + size + " (36) ");
+        System.out.println("And size of matrix array will be " + size + "x" + size);
     }
     public void printIntArray()
     {
-        System.out.print("Printing Matrix Array: ");  
+        System.out.println("Printing Matrix Array: ");  
        
         for(int j = 0; j <= size-1; j++)
         {
             for(int k = 0; k <= size-1; k++)
             {
                 int x = matrix[j][k];
-                System.out.print(x + " , ");
+                System.out.print(x + " ");
             }
+            System.out.println();
         }
     }
     
@@ -131,6 +149,67 @@ public class algorithm
         System.out.print("\nMin edge value is ");
         System.out.println(test);
     }
+   /* 
+    public void prim(){
+        Queue<Integer> queue = new PriorityQueue<Integer>(size);
+        s
+    }
+    
+    public int[][] kruskal(int[][] m, String[] l, int size){
+        int[][] graph = new int[size][size];
+        String[] label = new String[size];
+        Queue<Integer> queue = new PriorityQueue<Integer>(size);
+        
+        graph = m;
+        label = l;
+        
+        for(int i = 0; i < size; i++){
+            define cluster C(v) = {v};
+        }
+        
+        while(T? < n-1 edges){
+            (c,v) = queue.remove();
+            
+            if(C(u) != C(v)){
+                add edge to T;
+                merge C(u) and C() into one cluster;                     
+            }
+        }
+        return(T);
+    }
+    */
+    public void floydWarshall(){
+        int[][] d = new int[size][size];
+        int i, j, k;
+        
+        for(i = 0; i < size; i++){
+            for(j = 0; i < size; i++){
+                d[i][j] = matrix[i][j];
+            }
+        }
+        
+        for(i = 0; i < size; i++){
+            for(j = 0; j < size; j++){
+                for(k = 0; k < size; k++){
+                    if(d[j][k] > d[j][i] + d[i][k]){
+                        d[j][k] = d[j][i] + d[i][k];
+                    }
+                }
+            }
+        }
+        
+        for(i = 0; i < size; i++)
+        {
+            for(j = 0; j < size; j++)
+            {
+                int x = d[i][j];
+                System.out.print(x  + " ");
+            }
+            System.out.println();
+        }
+        
+    }
+    
     
 /*
 --------------------------------------------------------------------------------------- 
@@ -172,6 +251,7 @@ public class Prims_Algorithm
         }
     }
 */
-}    
+} 
+}
   
 
