@@ -66,86 +66,16 @@ public class algorithm
                 }catch (IOException x){
             System.err.format("IOException: %s%n", x);
         }
+    }
+    
+/*
+--------------------------------------------------------------------------------------- 
+                          FloydWarshall_Algorithm
+---------------------------------------------------------------------------------------     
 
-    }
-    public void printLabelArray()
-    {
-        for(int i = 0; i < label.length; i++)
-        {
-            System.out.print(label[i] + " , ");            
-        }
-        System.out.println("\nSize of label array is " + size);
-        System.out.println("And size of matrix array will be " + size + "x" + size);
-    }
-    public void printIntArray()
-    {
-        System.out.println("Printing Matrix Array: ");  
-       
-        for(int j = 0; j <= size-1; j++)
-        {
-            for(int k = 0; k <= size-1; k++)
-            {
-                if(matrix[j][k] == 999){
-                    System.out.print("i ");
-                }
-                else{
-                    System.out.print(matrix[j][k] + " ");
-                }
-            }
-            System.out.println();
-        }
-        
-        printMatrix(matrix);
-
-    }
-    public void printMinEdge(int x)
-    {
-        System.out.print("Printing Min Edge Value: ");  
-        // For reverse of natural order i.e. largest to smallest
-        // If you want the natural order don't use the Collections.reverseOrder() comparator
-        Queue<Integer> queue = new PriorityQueue<Integer>(size);
-        for(int j = 0; j <= size-1; j++)
-        {
-            queue.addAll(Arrays.asList(matrix[x][j]));
-        }
-        int test = queue.remove();
-        System.out.print("\nMin edge value is ");
-        System.out.println(test);
-        System.out.println();
-    }
-   /* 
-    public void prim(){
-        Queue<Integer> queue = new PriorityQueue<Integer>(size);
-        s
-    }
-    */
-    public void kruskal(){
-        int[][] d = new int[size][size];
-        int i,j;
-        
-        Queue<Integer> queue = new PriorityQueue<Integer>(size);
-        
-        for(i = 0; i < size; i++){
-            for(j = 0; j < size; j++){
-                d[i][j] = matrix[i][j];
-            }
-        }
-        
-        for(i = 0; i < size; i++){
-            queue.add()
-        }
-        
-        while(T? < n-1 edges){
-            (c,v) = queue.remove();
-            
-            if(C(u) != C(v)){
-                add edge to T;
-                merge C(u) and C() into one cluster;                     
-            }
-        }
-    }
-   
+*/
     public void floydWarshall(){
+         System.out.println("Dloyd-Warshalls Algorithm");
         int[][] d = new int[size][size];
         int i, j, k;
         
@@ -171,10 +101,10 @@ public class algorithm
     
     public void printMatrix(int[][] matrix){
         int i,j;
-       
+       System.out.print(" ");
        for(i=0; i < size; i++){
            
-           System.out.print("  " + label[i]);
+           System.out.print(" " + label[i]);
        }
        System.out.println();
        for(i = 0; i < size; i++)
@@ -194,8 +124,6 @@ public class algorithm
         System.out.println();
 
     }
-}
-
 /*
 --------------------------------------------------------------------------------------- 
                            Prims_Algorithm
@@ -205,6 +133,7 @@ public class algorithm
     public void Prims() 
 
     {
+        printMatrix(matrix);
         PriorityQueue<Integer> marked = new PriorityQueue<>(matrix.length);  //holds marked vertices
         PriorityQueue<Integer> unMarked = new PriorityQueue<>(matrix.length); //holds unmarked vertices
         //new 2D int array to hold Vertices
@@ -280,6 +209,7 @@ public class algorithm
             }
             diag++;
         }
+        System.out.println("\n");
     }
     
 /*
@@ -345,7 +275,7 @@ public class algorithm
                 }
                 diag++;
             }
-            System.out.println();
+            System.out.println("\n");
         
 }
  

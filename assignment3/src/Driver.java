@@ -11,14 +11,11 @@ public class Driver {
        algorithm test = new algorithm();
 
        //test.printLabelArray();
-       test.printIntArray();
+       //test.printIntArray();
        //test.printMinEdge(2);
        test.Prims();
        test.Kruskal();
-
        test.floydWarshall();
-       
-        
     }
 
     
