@@ -9,7 +9,13 @@ public class Driver {
     public static void main(String [] args)
     {
        algorithm test = new algorithm();
-       test.printMinEdge(1);
+
+       //test.printLabelArray();
+       test.printIntArray();
+       //test.printMinEdge(2);
+       test.Prims();
+       test.Kruskal();
+
        test.floydWarshall();
        
         
