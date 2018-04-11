@@ -10,6 +10,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
@@ -25,11 +26,13 @@ public class algorithm
     
     public algorithm()//runs every time the algorithm is created in the driver. Reads out .txt file and generates a 2D array for us to work with in our algorithms
     {
+
         String line;
                 Path file;
                 file = FileSystems.getDefault().getPath("src", "matrix.txt");
                 
                 try (BufferedReader reader = Files.newBufferedReader(file, StandardCharsets.UTF_8)){
+
                     //
                     //Creating a String array for Labes and itering how many we have
                     //
@@ -43,12 +46,14 @@ public class algorithm
                     //
                     //Creating a Int array for matrix from the rest of the .txt document
                     //
+
                     int x;
                     int i=0;
                     int[] matrixTemp = new int[120];
                     
                     int itr = 0;
                     matrix  = new int[size][size];
+
                     while ((line = reader.readLine()) != null){
                         String[] array = line.split(",");
                         
@@ -61,6 +66,7 @@ public class algorithm
                 }catch (IOException x){
             System.err.format("IOException: %s%n", x);
         }
+
     }
     public void printLabelArray()
     {
@@ -88,6 +94,9 @@ public class algorithm
             }
             System.out.println();
         }
+        
+        printMatrix(matrix);
+
     }
     public void printMinEdge(int x)
     {
@@ -102,13 +111,99 @@ public class algorithm
         int test = queue.remove();
         System.out.print("\nMin edge value is ");
         System.out.println(test);
+        System.out.println();
     }
+   /* 
+    public void prim(){
+        Queue<Integer> queue = new PriorityQueue<Integer>(size);
+        s
+    }
+    */
+    public void kruskal(){
+        int[][] d = new int[size][size];
+        int i,j;
+        
+        Queue<Integer> queue = new PriorityQueue<Integer>(size);
+        
+        for(i = 0; i < size; i++){
+            for(j = 0; j < size; j++){
+                d[i][j] = matrix[i][j];
+            }
+        }
+        
+        for(i = 0; i < size; i++){
+            queue.add()
+        }
+        
+        while(T? < n-1 edges){
+            (c,v) = queue.remove();
+            
+            if(C(u) != C(v)){
+                add edge to T;
+                merge C(u) and C() into one cluster;                     
+            }
+        }
+    }
+   
+    public void floydWarshall(){
+        int[][] d = new int[size][size];
+        int i, j, k;
+        
+        for(i = 0; i < size; i++){
+            for(j = 0; j < size; j++){
+                d[i][j] = matrix[i][j];
+            }
+        }
+        
+        for(i = 0; i < size; i++){
+            for(j = 0; j < size; j++){
+                for(k = 0; k < size; k++){
+                    if(d[j][k] > d[j][i] + d[i][k]){
+                        d[j][k] = d[j][i] + d[i][k];
+                        printMatrix(d);
+                    }
+                }
+            }
+        } 
+    }
+
+
+    
+    public void printMatrix(int[][] matrix){
+        int i,j;
+       
+       for(i=0; i < size; i++){
+           
+           System.out.print("  " + label[i]);
+       }
+       System.out.println();
+       for(i = 0; i < size; i++)
+        {
+            System.out.print(label[i] + " ");
+            for(j = 0; j < size; j++)
+            {
+                if(matrix[i][j] == 999){
+                    System.out.print("I ");
+                }
+                else{
+                    System.out.print(matrix[i][j] + " ");
+                }
+            }                
+            System.out.println();
+        } 
+        System.out.println();
+
+    }
+}
+
 /*
 --------------------------------------------------------------------------------------- 
                            Prims_Algorithm
 ---------------------------------------------------------------------------------------     
+
 */
     public void Prims() 
+
     {
         PriorityQueue<Integer> marked = new PriorityQueue<>(matrix.length);  //holds marked vertices
         PriorityQueue<Integer> unMarked = new PriorityQueue<>(matrix.length); //holds unmarked vertices
@@ -192,6 +287,7 @@ public class algorithm
                            Kruskal's_Algorithm
 ---------------------------------------------------------------------------------------     
 */
+
  public void Kruskal() 
     {
         int[][] d = new int[size][size];
@@ -284,10 +380,6 @@ public class algorithm
         }
    }
 }
-
-
-
-   
 
 
 
