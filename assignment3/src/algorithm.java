@@ -115,7 +115,7 @@ public class algorithm
         //new 2D int array to hold Vertices
         int[][] minSpanningTree = new int[matrix.length][matrix.length];
         int min = 999;
-        int minIndex = 0;
+        int minDex = 0;
         int initial = 3;//starting with random node
         int diag = 0;//for label print
 
@@ -135,16 +135,16 @@ public class algorithm
             if (adjWeight < min)
             {
                 min = adjWeight;
-                minIndex = i;
+                minDex = i;
             }
         }
 
-        unMarked.remove(minIndex);//removes the new vertex from unmarked priority queue
-        marked.add(minIndex);//adds the new vertex to marked priority queue
+        unMarked.remove(minDex);//removes the new vertex from unmarked priority queue
+        marked.add(minDex);//adds the new vertex to marked priority queue
 
         //adds vertices to the minSpanningTree array
-        minSpanningTree[initial][minIndex] = min;
-        minSpanningTree[minIndex][initial] = min;
+        minSpanningTree[initial][minDex] = min;
+        minSpanningTree[minDex][initial] = min;
 
         //for all marked vertecies in the matrix loop through the adjacent, unmarked vertices and find minimum edges
         while(unMarked.size() > 0)
@@ -161,18 +161,18 @@ public class algorithm
                         if (matrix[element][i] < min) 
                         {
                             min = matrix[element][i];
-                            minIndex = i;
+                            minDex = i;
                         }
                     }
                 }
                 if (iter == marked.size())
                 {
-                    minSpanningTree[element][minIndex] = min;
-                    minSpanningTree[minIndex][element] = min;
+                    minSpanningTree[element][minDex] = min;
+                    minSpanningTree[minDex][element] = min;
                 }
             }
-            unMarked.remove(minIndex);
-            marked.add(minIndex);
+            unMarked.remove(minDex);
+            marked.add(minDex);
         }
 
         System.out.println("Prims Matrix:");
@@ -186,8 +186,108 @@ public class algorithm
             diag++;
         }
     }
-}    
     
+/*
+--------------------------------------------------------------------------------------- 
+                           Kruskal's_Algorithm
+---------------------------------------------------------------------------------------     
+*/
+ public void Kruskal() 
+    {
+        int[][] d = new int[size][size];
+        int i,j;
+        int fillMST = 0;
+        int[][] MST = new int[matrix.length][matrix.length];
+        int[] c_u = new int[size];
+        int[] c_v = new int[size];
+        int[] c_merge = new int[size];
+        
+        Comparator<edge> Comparator = new edgeComparator();
+        PriorityQueue<edge> queue = new PriorityQueue<>(matrix.length, Comparator);  //holds marked vertices
+        
+        for(i = 0; i < size; i++){
+            for(j = 0; j < size; j++){
+                //d[i][j] = matrix[i][j];
+                edge temp = new edge(matrix[i][j], i,j);//create edge instances as we scan in from the matrix //////idk why we are creating a duplicate array for matrix
+                queue.add(temp);//populate queue
+                
+            }
+        }
+        System.out.println("Kruskals Algorithm");
+        while(fillMST < (label.length*2)-1)
+        {
+            int u,v;
+            if(queue.peek() != null)
+            {
+                edge x = queue.poll();
+                u = x.from;
+                v = x.to;
+
+
+                c_u[u] = u;
+                c_v[v] = v;
+
+                if(c_u[u] != c_v[v])//C(u) != C(v)
+                {
+                    MST[x.to][x.from] = x.weight;//add edge to T
+                    //merge C(u) and C() into one cluster;
+
+                    //System.out.print(label[u]+label[v] + " " );
+                }
+            }
+            fillMST++;
+        }
+        
+             //print labels.
+            int diag = 0;
+            for ( i = diag; i < MST.length; i++) 
+            {
+                for (j = diag; j < MST.length; j++) 
+                {
+                    if(MST[i][j] >0)
+                    System.out.print(label[i]+label[j]+" ");
+                }
+                diag++;
+            }
+            System.out.println();
+        
+}
+ 
+    public class edgeComparator implements Comparator<edge>
+    {
+       public int compare(edge a, edge b)
+       {
+           if (a.weight < b.weight)
+               return -1;  
+           else if (a.weight > b.weight)
+               return 1;
+           else
+           return 0;
+       }
+    } 
+
+   public class edge
+   {
+        public int weight=0;
+        public int to = 0;
+        public int from = 0;
+
+        public edge(int x, int y, int z)
+       {
+        weight = x;
+        to = y;
+        from = z;
+       }
+        public int weight()
+        {
+            return weight;
+        }
+   }
+}
+
+
+
+   
 
 
 

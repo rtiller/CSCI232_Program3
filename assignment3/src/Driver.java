@@ -12,7 +12,8 @@ public class Driver {
        //test.printLabelArray();
        test.printIntArray();
        //test.printMinEdge(2);
-       test.Prims();
+       //test.Prims();
+       test.Kruskal();
        
         
     }
