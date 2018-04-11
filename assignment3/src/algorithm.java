@@ -89,17 +89,21 @@ public class algorithm
         Queue<Integer> queue = new PriorityQueue<Integer>(size);
         s
     }
-    
-    public int[][] kruskal(int[][] m, String[] l, int size){
-        int[][] graph = new int[size][size];
-        String[] label = new String[size];
+    */
+    public void kruskal(){
+        int[][] d = new int[size][size];
+        int i,j;
+        
         Queue<Integer> queue = new PriorityQueue<Integer>(size);
         
-        graph = m;
-        label = l;
+        for(i = 0; i < size; i++){
+            for(j = 0; j < size; j++){
+                d[i][j] = matrix[i][j];
+            }
+        }
         
-        for(int i = 0; i < size; i++){
-            define cluster C(v) = {v};
+        for(i = 0; i < size; i++){
+            queue.add()
         }
         
         while(T? < n-1 edges){
@@ -110,9 +114,8 @@ public class algorithm
                 merge C(u) and C() into one cluster;                     
             }
         }
-        return(T);
     }
-    */
+   
     public void floydWarshall(){
         int[][] d = new int[size][size];
         int i, j, k;
