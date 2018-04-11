@@ -10,6 +10,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
@@ -27,11 +28,13 @@ public class algorithm
 
     public algorithm()//runs every time the algorithm is created in the driver. Reads out .txt file and generates a 2D array for us to work with in our algorithms
     {
+
         String line;
                 Path file;
                 file = FileSystems.getDefault().getPath("src", "matrix.txt");
                 
                 try (BufferedReader reader = Files.newBufferedReader(file, StandardCharsets.UTF_8)){
+
                     //
                     //Creating a String array for Labes and counting how many we have
                     //
@@ -161,6 +164,7 @@ public class algorithm
             System.out.println();
         } 
         System.out.println();
+
     }
 }
 /*
