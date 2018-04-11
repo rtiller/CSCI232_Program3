@@ -116,11 +116,11 @@ public class algorithm
         int[][] minSpanningTree = new int[matrix.length][matrix.length];
         int min = 999;
         int minIndex = 0;
-        int intitial = 3;//starting with random node
+        int initial = 3;//starting with random node
         int diag = 0;//for label print
 
-        unMarked.remove(intitial);
-        marked.add(intitial);
+        unMarked.remove(initial);
+        marked.add(initial);
         
         //ini. unmarked queue
         for (int i = 0; i < matrix.length; i++) 
@@ -131,7 +131,7 @@ public class algorithm
         //loops through every adjacent vertex of initial node and choose min
         for (int i = 0; i < matrix.length; i++) 
         {
-            int adjWeight = matrix[intitial][i];
+            int adjWeight = matrix[initial][i];
             if (adjWeight < min)
             {
                 min = adjWeight;
@@ -143,8 +143,8 @@ public class algorithm
         marked.add(minIndex);//adds the new vertex to marked priority queue
 
         //adds vertices to the minSpanningTree array
-        minSpanningTree[intitial][minIndex] = min;
-        minSpanningTree[minIndex][intitial] = min;
+        minSpanningTree[initial][minIndex] = min;
+        minSpanningTree[minIndex][initial] = min;
 
         //for all marked vertecies in the matrix loop through the adjacent, unmarked vertices and find minimum edges
         while(unMarked.size() > 0)
